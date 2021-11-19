@@ -37,4 +37,9 @@ class Map extends Model
     {
         return $this->hasManyThrough(MapEntry::Class, MapLayer::Class);
     }
+
+    public function collections()
+    {
+        return $this->belongsToMany(Map::Class, 'map_collection', 'map_id', 'collection_id');
+    }
 }
