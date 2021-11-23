@@ -21,12 +21,12 @@ class Map extends Model
 
     public function mapKeys()
     {
-        return $this->hasMany(MapKey::Class);
+        return $this->hasMany(MapKey::Class)->orderBy('label');
     }
 
     public function mapLayers()
     {
-        return $this->hasMany(MapLayer::Class);
+        return $this->hasMany(MapLayer::Class)->orderBy('label');
     }
 
     public function linkedLayers()
@@ -36,7 +36,7 @@ class Map extends Model
 
     public function mapEntries()
     {
-        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class);
+        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class)->orderBy('label');
     }
 
     public function collections()
