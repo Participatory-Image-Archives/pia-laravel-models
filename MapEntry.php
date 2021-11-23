@@ -17,7 +17,8 @@ class MapEntry extends Model
         'label',
         'type',
         'complex_data',
-        'map_layer_id'
+        'map_layer_id',
+        'image_id'
     ];
 
     /* relations */

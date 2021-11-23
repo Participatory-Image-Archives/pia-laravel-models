@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\MapKey;
 use App\Models\MapLayer;
 use App\Models\MapEntry;
+use App\Models\Collection;
 
 class Map extends Model
 {
@@ -40,6 +41,6 @@ class Map extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Map::Class, 'map_collection', 'map_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class, 'map_collection', 'map_id', 'collection_id');
     }
 }
