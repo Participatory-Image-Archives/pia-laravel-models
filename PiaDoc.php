@@ -16,6 +16,6 @@ class PiaDoc extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Collection::Class, 'pia_docs_collections', 'pia_doc_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class, 'pia_doc_collection', 'pia_doc_id', 'collection_id');
     }
 }

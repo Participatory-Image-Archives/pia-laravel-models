@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\MapKey;
 use App\Models\MapLayer;
 use App\Models\MapEntry;
+use App\Models\Collection;
 
 class Map extends Model
 {
@@ -20,12 +21,12 @@ class Map extends Model
 
     public function mapKeys()
     {
-        return $this->hasMany(MapKey::Class);
+        return $this->hasMany(MapKey::Class)->orderBy('label');
     }
 
     public function mapLayers()
     {
-        return $this->hasMany(MapLayer::Class);
+        return $this->hasMany(MapLayer::Class)->orderBy('label');
     }
 
     public function linkedLayers()
@@ -35,11 +36,11 @@ class Map extends Model
 
     public function mapEntries()
     {
-        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class);
+        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class)->orderBy('label');
     }
 
     public function collections()
     {
-        return $this->belongsToMany(Map::Class, 'map_collection', 'map_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class, 'map_collection', 'map_id', 'collection_id');
     }
 }
