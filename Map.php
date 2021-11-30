@@ -14,7 +14,8 @@ class Map extends Model
 
     protected $fillable = [
         'label',
-        'tiles'
+        'tiles',
+        'origin'
     ];
     
     /* relations */
