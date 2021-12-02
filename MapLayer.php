@@ -24,6 +24,6 @@ class MapLayer extends Model
 
     public function mapEntries()
     {
-        return $this->hasMany(MapEntry::Class);
+        return $this->hasMany(MapEntry::Class)->orderBy('label');
     }
 }

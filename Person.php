@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Image;
+
 class Person extends Model
 {
     protected $connection = 'pia';
@@ -18,4 +20,9 @@ class Person extends Model
         'deathplace',
         'description',
     ];
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::Class);
+    }
 }
