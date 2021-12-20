@@ -29,11 +29,11 @@ class Image extends Model
         'sequence_number',
         
         'location_id',
-        'collection',
         'verso',
-        'objecttype',
-        'model',
-        'format',
+
+        'object_type_id',
+        'model_type_id',
+        'format_id',
     ];
 
     public function verso()
