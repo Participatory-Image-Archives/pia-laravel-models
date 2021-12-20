@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Image;
+
 
 class Date extends Model
 {
@@ -13,4 +15,9 @@ class Date extends Model
         'date_string',
         'type',
     ];
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::Class, 'image_date', 'date_id', 'image_id');
+    }
 }

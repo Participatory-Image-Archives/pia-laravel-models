@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Image;
 
 class ObjectType extends Model
 {
@@ -12,4 +13,9 @@ class ObjectType extends Model
         'label',
         'comment',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::Class);
+    }
 }
