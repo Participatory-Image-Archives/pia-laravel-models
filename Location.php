@@ -16,7 +16,7 @@ class Location extends Model
         'latitude',
         'longitude',
         'place_id',
-    
+        'provenance'
     ];
 
     public function images()
