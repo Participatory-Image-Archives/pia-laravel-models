@@ -81,6 +81,11 @@ class Image extends Model
         return $this->belongsToMany(Collection::Class, 'image_collection', 'image_id', 'collection_id');
     }
 
+    public function documents()
+    {
+        return $this->belongsToMany(Document::Class, 'document_image', 'image_id', 'document_id');
+    }
+
     public function comments()
     {
         return $this->belongsToMany(Comment::Class, 'image_comment', 'image_id', 'comment_id');

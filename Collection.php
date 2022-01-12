@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Image;
+use App\Models\Document;
 use App\Models\AltLabel;
 use App\Models\Comment;
 use App\Models\Date;
@@ -52,6 +53,11 @@ class Collection extends Model
     public function images()
     {
         return $this->belongsToMany(Image::Class, 'image_collection', 'collection_id', 'image_id');
+    }
+
+    public function documents()
+    {
+        return $this->belongsToMany(Document::Class, 'document_collection', 'collection_id', 'document_id');
     }
 
     public function images_ids()
