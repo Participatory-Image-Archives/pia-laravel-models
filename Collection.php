@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Date;
 use App\Models\Literature;
 use App\Models\Person;
+use App\Models\Set;
 
 class Collection extends Model
 {
@@ -73,5 +74,10 @@ class Collection extends Model
     public function maps()
     {
         return $this->belongsToMany(Map::Class, 'map_collection', 'collection_id', 'map_id');
+    }
+
+    public function set()
+    {
+        return $this->hasOne(Set::Class);
     }
 }
