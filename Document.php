@@ -13,6 +13,7 @@ class Document extends Model
     
     protected $fillable = [
         'label',
+        'comment',
         'file_name',
         'original_file_name',
         'base_path',
@@ -26,5 +27,10 @@ class Document extends Model
     public function images()
     {
         return $this->belongsToMany(Image::Class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::Class, 'signature_id');
     }
 }

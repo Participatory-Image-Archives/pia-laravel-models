@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Collection;
+use App\Models\Document;
 
 class Set extends Model
 {
@@ -13,11 +13,12 @@ class Set extends Model
         'label',
         'description',
         'signatures',
-        'collection_id'
+        'created_at',
+        'updated_at'
     ];
 
-    public function collection()
+    public function documents()
     {
-        return $this->belongsTo(Collection::Class);
+        return $this->belongsToMany(Document::Class, 'document_set', 'set_id', 'document_id');
     }
 }
