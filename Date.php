@@ -12,6 +12,8 @@ class Date extends Model
     
     protected $fillable = [
         'date',
+        'end_date',
+        'accuracy',
         'date_string',
         'type',
     ];
