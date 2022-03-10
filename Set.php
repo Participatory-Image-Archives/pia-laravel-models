@@ -11,6 +11,7 @@ class Set extends Model
     
     protected $fillable = [
         'label',
+        'origin',
         'description',
         'signatures',
         'created_at',
