@@ -12,7 +12,9 @@ class MapLayer extends Model
 
     protected $fillable = [
         'label',
-        'map_id'
+        'map_id',
+        'zoom_min',
+        'zoom_max'
     ];
     
     /* relations */
