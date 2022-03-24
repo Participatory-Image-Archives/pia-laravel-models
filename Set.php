@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Document;
 
 class Set extends Model
 {
+    use SoftDeletes;
+
     protected $connection = 'pia';
     
     protected $fillable = [
         'label',
         'origin',
         'description',
-        'signatures',
-        'created_at',
-        'updated_at'
+        'signatures'
     ];
 
     public function documents()
