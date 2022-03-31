@@ -4,15 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Collection;
-use App\Models\Date;
-use App\Models\Person;
-use App\Models\Image;
-use App\Models\Comment;
-
 class Album extends Model
 {
-    protected $connection = 'pia';
+    use SoftDeletes;
     
     protected $fillable = [
         'salsah_id',
@@ -20,21 +14,22 @@ class Album extends Model
         'label',
         'signature',
         'description',
+        'date_id'
     ];
+
+    public function date()
+    {
+        return $this->belongsTo(Date::Class);
+    }
 
     public function collections()
     {
         return $this->belongsToMany(Collection::Class);
     }
 
-    public function dates()
+    public function agents()
     {
-        return $this->belongsToMany(Date::Class);
-    }
-
-    public function people()
-    {
-        return $this->belongsToMany(Person::Class);
+        return $this->belongsToMany(Agent::Class);
     }
 
     public function images()

@@ -4,13 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Document;
 
-class Set extends Model
+class Aggregation extends Model
 {
     use SoftDeletes;
-
-    protected $connection = 'pia';
     
     protected $fillable = [
         'label',
@@ -21,6 +18,6 @@ class Set extends Model
 
     public function documents()
     {
-        return $this->belongsToMany(Document::Class, 'document_set', 'set_id', 'document_id');
+        return $this->belongsToMany(Document::Class);
     }
 }

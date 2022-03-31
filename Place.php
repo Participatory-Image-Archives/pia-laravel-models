@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Image;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Location extends Model
+class Place extends Model
 {
-    protected $connection = 'pia';
+    use SoftDeletes;
     
     protected $fillable = [
         'label',
@@ -16,13 +16,11 @@ class Location extends Model
         'geonames_code',
         'geonames_code_name',
         'geonames_division_level',
-        'wiki_url',
+        'wiki_uri',
         'geometry',
         'latitude',
         'longitude',
-        'origin' ,
-        'created_at',
-        'updated_at'
+        'origin'
     ];
 
     public function images()

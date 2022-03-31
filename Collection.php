@@ -3,19 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Image;
-use App\Models\Document;
-use App\Models\AltLabel;
-use App\Models\Comment;
-use App\Models\Date;
-use App\Models\Literature;
-use App\Models\Person;
-use App\Models\Set;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Collection extends Model
 {
-    protected $connection = 'pia';
-    
+    use SoftDeletes;
+
     protected $fillable = [
         'salsah_id',
         'label',
@@ -24,26 +17,27 @@ class Collection extends Model
         'default_image',
         'embedded_video',
         'origin',
+        'date_id',
     ];
 
     public function altLabels()
     {
-        return $this->belongsToMany(AltLabel::Class, 'collection_alt_label', 'collection_id', 'alt_label_id');
+        return $this->belongsToMany(AltLabel::Class);
     }
 
-    public function people()
+    public function date()
     {
-        return $this->belongsToMany(Person::Class);
+        return $this->belongsTo(Date::Class);
+    }
+
+    public function agents()
+    {
+        return $this->belongsToMany(Agent::Class);
     }
 
     public function literatures()
     {
         return $this->belongsToMany(Literature::Class);
-    }
-
-    public function dates()
-    {
-        return $this->belongsToMany(Date::Class);
     }
 
     public function comments()
@@ -53,31 +47,29 @@ class Collection extends Model
 
     public function images()
     {
-        return $this->belongsToMany(Image::Class, 'image_collection', 'collection_id', 'image_id');
+        return $this->belongsToMany(Image::Class);
     }
 
     public function documents()
     {
-        return $this->belongsToMany(Document::Class, 'document_collection', 'collection_id', 'document_id');
+        return $this->belongsToMany(Document::Class);
     }
 
-    public function images_ids()
+    public function notes()
     {
-        return $this->images()->allRelatedIds();
-    }
-
-    public function docs()
-    {
-        return $this->belongsToMany(PiaDoc::Class, 'pia_doc_collection', 'collection_id', 'pia_doc_id');
+        return $this->belongsToMany(Note::Class);
     }
 
     public function maps()
     {
-        return $this->belongsToMany(Map::Class, 'map_collection', 'collection_id', 'map_id');
+        return $this->belongsToMany(Map::Class);
     }
 
-    public function set()
+    /**
+     * Convenience Functions
+     */
+    public function images_ids()
     {
-        return $this->hasOne(Set::Class);
+        return $this->images()->allRelatedIds();
     }
 }

@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use App\Models\Image;
-use App\Models\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Document extends Model
 {
-    protected $connection = 'pia';
+    use SoftDeletes;
     
     protected $fillable = [
         'label',
@@ -21,16 +19,11 @@ class Document extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Collection::Class, 'document_collection', 'document_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class);
     }
 
-    public function images()
+    public function aggregations()
     {
-        return $this->belongsToMany(Image::Class);
-    }
-
-    public function image()
-    {
-        return $this->belongsTo(Image::Class, 'signature_id');
+        return $this->belongsToMany(Aggregation::Class);
     }
 }

@@ -3,43 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use App\Models\ObjectType;
-use App\Models\ModelType;
-use App\Models\Format;
-use App\Models\Person;
-use App\Models\Date;
-use App\Models\Location;
-use App\Models\Keyword;
-use App\Models\Comment;
-use App\Models\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    protected $connection = 'pia';
+    use SoftDeletes;
     
     protected $fillable = [
         'salsah_id',
+
         'oldnr',
         'signature',
         'title',
-        'original_title',
-        'base_path',
-        'salsah_date',
         'sequence_number',
-        
-        'location_id',
-        'verso',
+
+        'date_id',
+        'place_id',
+        'copyright_id',
+
+        'file_name',
+        'original_file_name',
+        'base_path',
 
         'object_type_id',
         'model_type_id',
         'format_id',
     ];
-
-    public function verso()
-    {
-        return $this->hasOne(Image::Class, 'verso_id');
-    }
 
     public function objectType()
     {
@@ -56,19 +45,19 @@ class Image extends Model
         return $this->belongsTo(Format::Class);
     }
 
-    public function location()
+    public function place()
     {
         return $this->belongsTo(Location::Class);
     }
 
-    public function dates()
+    public function copyright()
     {
-        return $this->belongsToMany(Date::Class, 'image_date', 'image_id', 'date_id');
+        return $this->belongsTo(Agent::Class, 'copyright_id');
     }
 
-    public function people()
+    public function agents()
     {
-        return $this->belongsToMany(Person::Class);
+        return $this->belongsToMany(Agent::Class);
     }
 
     public function keywords()
@@ -78,16 +67,11 @@ class Image extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Collection::Class, 'image_collection', 'image_id', 'collection_id');
-    }
-
-    public function documents()
-    {
-        return $this->belongsToMany(Document::Class, 'document_image', 'image_id', 'document_id');
+        return $this->belongsToMany(Collection::Class);
     }
 
     public function comments()
     {
-        return $this->belongsToMany(Comment::Class, 'image_comment', 'image_id', 'comment_id');
+        return $this->belongsToMany(Comment::Class);
     }
 }

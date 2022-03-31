@@ -3,23 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Image;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Date extends Model
 {
-    protected $connection = 'pia';
+    use SoftDeletes;
     
     protected $fillable = [
         'date',
         'end_date',
         'accuracy',
-        'date_string',
-        'type',
+        'date_string'
     ];
-
-    public function images()
-    {
-        return $this->belongsToMany(Image::Class, 'image_date', 'date_id', 'image_id');
-    }
 }
