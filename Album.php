@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
+    protected $connection= 'pia';
+    
     use SoftDeletes;
     
     protected $fillable = [

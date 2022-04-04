@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
+    protected $connection= 'pia';
+    
     use SoftDeletes;
     
     protected $fillable = [
