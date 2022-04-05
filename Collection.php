@@ -16,6 +16,7 @@ class Collection extends Model
         'label',
         'signature',
         'description',
+        'creator',
         'default_image',
         'embedded_video',
         'origin',
