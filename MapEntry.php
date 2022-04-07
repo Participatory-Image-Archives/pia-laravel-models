@@ -36,9 +36,9 @@ class MapEntry extends Model
         return $this->belongsToMany(MapKey::Class);
     }
 
-    public function location()
+    public function place()
     {
-        return $this->belongsTo(Location::Class);
+        return $this->belongsTo(Place::Class);
     }
 
     public function image()
