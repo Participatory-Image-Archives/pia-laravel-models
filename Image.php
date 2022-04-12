@@ -22,6 +22,7 @@ class Image extends Model
         'date_id',
         'place_id',
         'copyright_id',
+        'license',
 
         'file_name',
         'original_file_name',
