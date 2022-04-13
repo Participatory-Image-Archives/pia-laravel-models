@@ -68,6 +68,11 @@ class Collection extends Model
         return $this->belongsToMany(Map::Class);
     }
 
+    public function calls()
+    {
+        return $this->hasMany(Call::Class);
+    }
+
     /**
      * Convenience Functions
      */
