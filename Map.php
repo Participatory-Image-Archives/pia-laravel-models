@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MapKey;
-use App\Models\MapLayer;
-use App\Models\MapEntry;
-use App\Models\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Map extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
 
     protected $fillable = [
         'label',
@@ -42,6 +41,6 @@ class Map extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Collection::Class, 'map_collection', 'map_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class);
     }
 }

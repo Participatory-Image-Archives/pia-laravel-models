@@ -5,33 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comment extends Model
+class Document extends Model
 {
     protected $connection= 'pia';
     
     use SoftDeletes;
     
     protected $fillable = [
+        'label',
         'comment',
+        'file_name',
+        'original_file_name',
+        'base_path',
     ];
-
-    public function images()
-    {
-        return $this->belongsToMany(Image::Class);
-    }
 
     public function collections()
     {
         return $this->belongsToMany(Collection::Class);
     }
 
-    public function albums()
+    public function aggregations()
     {
-        return $this->belongsToMany(Album::Class);
-    }
-
-    public function agents()
-    {
-        return $this->belongsToMany(Agent::Class);
+        return $this->belongsToMany(Aggregation::Class);
     }
 }

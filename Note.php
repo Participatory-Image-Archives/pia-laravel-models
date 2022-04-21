@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PiaDoc extends Model
+class Note extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
     
+    use SoftDeletes;
+
     protected $fillable = [
         'label',
         'description',
@@ -16,6 +19,6 @@ class PiaDoc extends Model
 
     public function collections()
     {
-        return $this->belongsToMany(Collection::Class, 'pia_doc_collection', 'pia_doc_id', 'collection_id');
+        return $this->belongsToMany(Collection::Class);
     }
 }

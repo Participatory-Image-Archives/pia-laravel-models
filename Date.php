@@ -3,14 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Date extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
     
     protected $fillable = [
         'date',
-        'date_string',
-        'type',
+        'end_date',
+        'accuracy',
+        'date_string'
     ];
 }

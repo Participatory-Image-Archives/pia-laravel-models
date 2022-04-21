@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Map;
-use App\Models\MapEntry;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MapLayer extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
 
     protected $fillable = [
         'label',
