@@ -28,4 +28,5 @@ class Document extends Model
     {
         return $this->belongsToMany(Aggregation::Class);
     }
+
 }
