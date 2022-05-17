@@ -38,4 +38,14 @@ class Comment extends Model
     {
         return $this->belongsTo(Agent::Class);
     }
+
+    public function albums()
+    {
+        return $this->belongsTo(Album::Class);
+    }
+
+    public function agents()
+    {
+        return $this->belongsTo(Agent::Class);
+    }
 }

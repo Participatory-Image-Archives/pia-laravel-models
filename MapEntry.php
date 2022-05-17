@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MapEntry extends Model
 {
-    protected $connection= 'pia';
+    protected $connection = 'pia';
     
     use SoftDeletes;
 

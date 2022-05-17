@@ -16,6 +16,7 @@ class Collection extends Model
         'label',
         'signature',
         'description',
+        'creator',
         'default_image',
         'embedded_video',
         'origin',
@@ -66,6 +67,11 @@ class Collection extends Model
     public function maps()
     {
         return $this->belongsToMany(Map::Class);
+    }
+
+    public function calls()
+    {
+        return $this->hasMany(Call::Class);
     }
 
     /**

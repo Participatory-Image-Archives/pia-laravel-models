@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    protected $connection= 'pia';
+    protected $connection = 'pia';
     
     use SoftDeletes;
     
@@ -22,6 +22,7 @@ class Image extends Model
         'date_id',
         'place_id',
         'copyright_id',
+        'license',
 
         'file_name',
         'original_file_name',
@@ -49,7 +50,12 @@ class Image extends Model
 
     public function place()
     {
-        return $this->belongsTo(Location::Class);
+        return $this->belongsTo(Place::Class);
+    }
+
+    public function date()
+    {
+        return $this->belongsTo(Date::Class);
     }
 
     public function copyright()
