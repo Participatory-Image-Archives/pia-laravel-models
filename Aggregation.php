@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Literature extends Model
+class Aggregation extends Model
 {
     protected $connection= 'pia';
     
@@ -13,5 +13,13 @@ class Literature extends Model
     
     protected $fillable = [
         'label',
+        'origin',
+        'description',
+        'signatures'
     ];
+
+    public function documents()
+    {
+        return $this->belongsToMany(Document::Class);
+    }
 }

@@ -3,15 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Map;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MapKey extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
 
     protected $fillable = [
         'label',
-        'icon'
+        'icon',
+        'icon_file_name',
+        'original_icon_file_name',
+        'map_id'
     ];
 
     /* relations */

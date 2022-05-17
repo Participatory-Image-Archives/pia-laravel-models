@@ -3,13 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ObjectType extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
     
     protected $fillable = [
         'label',
         'comment',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::Class);
+    }
 }

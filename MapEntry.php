@@ -3,21 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Map;
-use App\Models\MapLayer;
-use App\Models\MapKey;
-use App\Models\Location;
-use App\Models\Image;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MapEntry extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
 
     protected $fillable = [
         'label',
+        'description',
         'type',
         'complex_data',
-        'map_layer_id'
+        'map_layer_id',
+        'place_id',
+        'image_id'
     ];
 
     /* relations */
@@ -37,9 +38,9 @@ class MapEntry extends Model
         return $this->belongsToMany(MapKey::Class);
     }
 
-    public function location()
+    public function place()
     {
-        return $this->belongsTo(Location::Class);
+        return $this->belongsTo(Place::Class);
     }
 
     public function image()

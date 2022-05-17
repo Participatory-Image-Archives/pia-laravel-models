@@ -3,24 +3,39 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Image;
-use App\Models\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
     
     protected $fillable = [
         'comment',
+        'image_id',
+        'collection_id',
+        'album_id',
+        'agent_id'
     ];
 
-    public function images()
+    public function image()
     {
-        return $this->belongsToMany(Image::Class, 'image_comment', 'comment_id', 'image_id');
+        return $this->belongsTo(Image::Class);
     }
 
-    public function collections()
+    public function collection()
     {
-        return $this->belongsToMany(Image::Class, 'collection_comment', 'comment_id', 'collection_id');
+        return $this->belongsTo(Collection::Class);
+    }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::Class);
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::Class);
     }
 }

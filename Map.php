@@ -3,29 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MapKey;
-use App\Models\MapLayer;
-use App\Models\MapEntry;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Map extends Model
 {
-    protected $connection = 'pia';
+    protected $connection= 'pia';
+    
+    use SoftDeletes;
 
     protected $fillable = [
         'label',
-        'tiles'
+        'description',
+        'tiles',
+        'origin'
     ];
     
     /* relations */
 
     public function mapKeys()
     {
-        return $this->hasMany(MapKey::Class);
+        return $this->hasMany(MapKey::Class)->orderBy('label');
     }
 
     public function mapLayers()
     {
-        return $this->hasMany(MapLayer::Class);
+        return $this->hasMany(MapLayer::Class)->orderBy('label');
     }
 
     public function linkedLayers()
@@ -35,6 +37,11 @@ class Map extends Model
 
     public function mapEntries()
     {
-        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class);
+        return $this->hasManyThrough(MapEntry::Class, MapLayer::Class)->orderBy('label');
+    }
+
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::Class);
     }
 }
