@@ -80,6 +80,6 @@ class Image extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(Comment::Class);
+        return $this->hasMany(Comment::Class);
     }
 }
