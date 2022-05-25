@@ -13,25 +13,39 @@ class Comment extends Model
     
     protected $fillable = [
         'comment',
+        'image_id',
+        'collection_id',
+        'album_id',
+        'agent_id'
     ];
 
-    public function images()
+    public function image()
     {
-        return $this->belongsToMany(Image::Class);
+        return $this->belongsTo(Image::Class);
     }
 
-    public function collections()
+    public function collection()
     {
-        return $this->belongsToMany(Collection::Class);
+        return $this->belongsTo(Collection::Class);
+    }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::Class);
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::Class);
     }
 
     public function albums()
     {
-        return $this->belongsToMany(Album::Class);
+        return $this->belongsTo(Album::Class);
     }
 
     public function agents()
     {
-        return $this->belongsToMany(Agent::Class);
+        return $this->belongsTo(Agent::Class);
     }
 }

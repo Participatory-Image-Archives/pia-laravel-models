@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends Model
 {
-    protected $connection= 'pia';
+    protected $connection = 'pia';
     
     use SoftDeletes;
     
@@ -80,6 +80,6 @@ class Image extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(Comment::Class);
+        return $this->hasMany(Comment::Class);
     }
 }

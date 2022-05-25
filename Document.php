@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Document extends Model
 {
-    protected $connection= 'pia';
+    protected $connection = 'pia';
     
     use SoftDeletes;
     
