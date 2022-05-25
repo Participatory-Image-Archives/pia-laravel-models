@@ -47,4 +47,9 @@ class MapEntry extends Model
     {
         return $this->belongsTo(Image::Class);
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::Class)
+    }
 }
