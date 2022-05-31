@@ -21,6 +21,16 @@ class Keyword extends Model
         return $this->belongsToMany(Image::Class);
     }
 
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::Class);
+    }
+
+    public function calls()
+    {
+        return $this->belongsToMany(Call::Class);
+    }
+
     public function altLabels()
     {
         return $this->belongsToMany(AltLabel::Class, 'keyword_alt_label');
