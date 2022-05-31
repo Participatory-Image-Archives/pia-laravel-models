@@ -74,6 +74,11 @@ class Collection extends Model
         return $this->hasMany(Call::Class);
     }
 
+    public function keywords()
+    {
+        return $this->belongsToMany(Keyword::Class);
+    }
+
     /**
      * Convenience Functions
      */
