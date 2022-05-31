@@ -50,6 +50,6 @@ class MapEntry extends Model
 
     public function documents()
     {
-        return $this->hasMany(Document::Class)
+        return $this->belongsToMany(Document::Class);
     }
 }
