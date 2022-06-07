@@ -24,7 +24,7 @@ class Call extends Model
     /**
      * of course a call can have entries
      */
-    public function call_entries()
+    public function callEntries()
     {
         return $this->hasMany(CallEntry::class);
     }
