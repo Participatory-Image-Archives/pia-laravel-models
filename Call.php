@@ -44,6 +44,7 @@ class Call extends Model
     {
         return $this->belongsToMany(Image::Class);
     }
+
     /**
      * belongs to a collection
      */
