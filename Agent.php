@@ -36,6 +36,11 @@ class Agent extends Model
         return $this->belongsToMany(Image::Class);
     }
 
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::Class);
+    }
+
     public function birthplace()
     {
         return $this->belongsTo(Place::Class, 'birthplace_id');
