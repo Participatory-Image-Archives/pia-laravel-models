@@ -36,6 +36,14 @@ class CallEntry extends Model
     }
 
     /**
+     * call entry can relate to images
+     */
+    public function images()
+    {
+        return $this->belongsToMany(Image::Class);
+    }
+
+    /**
      * belongs to a call
      */
     public function call()

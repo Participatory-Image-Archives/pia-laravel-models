@@ -38,6 +38,13 @@ class Call extends Model
     }
 
     /**
+     * call can have images
+     */
+    public function images()
+    {
+        return $this->belongsToMany(Image::Class);
+    }
+    /**
      * belongs to a collection
      */
     public function collection()
