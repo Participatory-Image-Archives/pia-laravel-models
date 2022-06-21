@@ -82,4 +82,9 @@ class Image extends Model
     {
         return $this->hasMany(Comment::Class);
     }
+
+    public function callEntries()
+    {
+        return $this->belongsToMany(CallEntry::Class);
+    }
 }
