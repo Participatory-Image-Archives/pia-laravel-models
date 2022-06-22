@@ -73,6 +73,11 @@ class Image extends Model
         return $this->belongsToMany(Keyword::Class);
     }
 
+    public function detections()
+    {
+        return $this->hasMany(Detection::Class, 'sgv_signature', 'signature');
+    }
+
     public function collections()
     {
         return $this->belongsToMany(Collection::Class);
