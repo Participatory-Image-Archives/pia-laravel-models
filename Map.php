@@ -44,4 +44,9 @@ class Map extends Model
     {
         return $this->belongsToMany(Collection::Class);
     }
+
+    public function documents()
+    {
+        return $this->belongsToMany(Document::Class);
+    }
 }
