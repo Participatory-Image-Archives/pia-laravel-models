@@ -28,4 +28,14 @@ class Document extends Model
     {
         return $this->belongsToMany(Aggregation::Class);
     }
+
+    public function maps()
+    {
+        return $this->belongsToMany(Map::Class);
+    }
+
+    public function mapEntries()
+    {
+        return $this->belongsToMany(MapEntry::Class);
+    }
 }
