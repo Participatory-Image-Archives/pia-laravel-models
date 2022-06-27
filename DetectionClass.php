@@ -19,9 +19,4 @@ class DetectionClass extends Model
         return $this->hasMany(Detection::Class, 'class_id');
     }
 
-    public function images()
-    {
-        return $this->hasManyThrough(Image::Class, Detection::Class, 'class_id', 'signature', 'id', 'sgv_signature');
-    }
-
 }
